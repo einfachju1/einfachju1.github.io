@@ -18,7 +18,10 @@ const image = icons[`si${link.platform}`]
   rel="noopener noreferrer"
 >
   <div>
-    <div class="flex size-16 items-center justify-center fill-white">
+    <div
+      class="flex size-16 items-center justify-center"
+      style="fill: var(--color-primary-content)"
+    >
       <Fragment set:html={image.svg} class="size-full" />
     </div>
   </div>
