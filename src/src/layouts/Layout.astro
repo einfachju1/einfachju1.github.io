@@ -1,0 +1,23 @@
+---
+import { getData } from "../lib/data"
+import Favicon from "../assets/favicon.svg"
+import "../styles/global.css"
+
+const data = await getData()
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={`Links for ${data.name}`} />
+    <meta name="darkreader-lock" />
+    <title>{data.name}</title>
+    <link rel="icon" type="image/svg+xml" href={Favicon.src} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

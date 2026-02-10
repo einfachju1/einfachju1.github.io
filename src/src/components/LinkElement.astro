@@ -1,0 +1,29 @@
+---
+import * as icons from "simple-icons"
+import type { Link } from "../lib/data"
+
+interface Props {
+  link: Link
+}
+
+const { link } = Astro.props
+const displayName = link.name ?? link.platform
+const image = icons[`si${link.platform}`]
+---
+
+<a
+  class="btn btn-primary mt-4 flex h-28 rounded-xl lg:h-32"
+  href={link.link}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div>
+    <div class="flex size-16 items-center justify-center fill-white">
+      <Fragment set:html={image.svg} class="size-full" />
+    </div>
+  </div>
+
+  <p class="flex w-full items-center justify-center truncate text-3xl">
+    {displayName}
+  </p>
+</a>

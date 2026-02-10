@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets"
+import Layout from "../layouts/Layout.astro"
+import LinkElement from "../components/LinkElement.astro"
+import { getData } from "../lib/data"
+
+const data = await getData()
+---
+
+<Layout>
+  <div class="flex flex-col items-center p-4">
+    <main
+      class="bg-base-200 flex w-9/10 max-w-200 flex-col items-center rounded-2xl"
+    >
+      <div class="my-4">
+        <Image
+          class="mb-2 w-48 rounded-full lg:w-64"
+          src={data.image}
+          alt="Profile"
+          width="256"
+          height="256"
+          layout="none"
+          fetchpriority="high"
+          loading="eager"
+        />
+        <h1 class="text-center text-4xl font-bold">{data.name}</h1>
+      </div>
+      <div class="bg-base-300 flex w-full flex-col items-center rounded-2xl">
+        <div class="mb-4 w-full px-4">
+          {data.links.map((link) => <LinkElement link={link} />)}
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
